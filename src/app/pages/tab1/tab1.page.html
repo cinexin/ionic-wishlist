@@ -1,11 +1,17 @@
 <ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-title>
-      Tab pendientes
+      Deseos pendientes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Hola mundo</h1>
+  <app-lists [completedTab]="false"></app-lists>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="addWishList()">
+      <ion-icon slot="" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

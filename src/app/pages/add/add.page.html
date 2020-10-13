@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary">
+      </ion-back-button>
+      <ion-title>{{wishList.title}}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nuevo item</ion-label>
+      <ion-input type="text" [(ngModel)]="itemName" (keyup.enter)="addItem()"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label *ngIf="wishList.items.length > 0">
+        Tareas por hacer
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let wish of wishList.items; let i = index" class="animated fadeInDown">
+      <ion-item>
+        <ion-checkbox slot="start" [(ngModel)]="wish.completed" (ionChange)="checkChange()">
+        </ion-checkbox>
+        <ion-label>
+          {{wish.description}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="deleteWish(i)" color="danger">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
